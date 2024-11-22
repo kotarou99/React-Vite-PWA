@@ -1,9 +1,17 @@
-import { useState } from 'react'
+import { useEffect,useState } from 'react'
 import reactLogo from './assets/react.svg'
 import viteLogo from '/vite.svg'
 import './App.css'
+import OneSignal from 'react-onesignal'
 
 function App() {
+  useEffect(() => {
+    (async() => {
+      OneSignal.init({ 
+        appId: '3f2f3975-7bef-45d1-a40b-5f47602517ea', 
+      })
+    })()
+  }, [])
   const [count, setCount] = useState(0)
 
   return (
