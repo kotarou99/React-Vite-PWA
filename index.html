@@ -10,5 +10,18 @@
   <link rel="manifest" href="/React-Vite-PWA/manifest.webmanifest"><script id="vite-plugin-pwa:register-sw" src="/React-Vite-PWA/registerSW.js"></script></head>
   <body>
     <div id="root"></div>
+    <script src="https://cdn.onesignal.com/sdks/OneSignalSDK.js" async></script>
+    <script>
+      window.OneSignal = window.OneSignal || [];
+      OneSignal.push(function() {
+        OneSignal.init({
+          appId: "97f61e1e-6645-4807-9a94-2bb1e29ed4db", // OneSignalのアプリIDに置き換える
+          serviceWorkerPath: "/OneSignalSDKWorker.js", // publicディレクトリ内のファイルがルートから参照される
+          notifyButton: {
+            enable: true,
+          },
+        });
+      });
+    </script>
   </body>
 </html>
