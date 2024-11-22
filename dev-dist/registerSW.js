@@ -1,0 +1,1 @@
+if('serviceWorker' in navigator) navigator.serviceWorker.register('/React-Vite-PWA/dev-sw.js?dev-sw', { scope: '/React-Vite-PWA/', type: 'classic' })
