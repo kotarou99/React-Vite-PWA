@@ -44,8 +44,6 @@
 import { useEffect, useState } from 'react';
 import './App.css';
 import OneSignal from 'react-onesignal';
-import TaskForm from './components/TaskForm';
-import TaskList from './components/TaskList';
 
 function App() {
   const [tasks, setTasks] = useState([]);
@@ -59,21 +57,24 @@ function App() {
     })();
   }, []);
 
-  // タスクを追加する関数
-  const addTask = (task) => {
-    setTasks([...tasks, task]);
-  };
-
-  // タスクを削除する関数
-  const deleteTask = (id) => {
-    setTasks(tasks.filter((task) => task.id !== id));
+  // プッシュ通知を送信する関数
+  const sendNotification = async () => {
+    try {
+      const response = await OneSignal.postNotification({
+        contents: { en: "This is a test notification!" },
+        headings: { en: "Hello!" },
+        included_segments: ["Subscribed Users"],
+      });
+      console.log("Notification sent:", response);
+    } catch (error) {
+      console.error("Error sending notification:", error);
+    }
   };
 
   return (
     <div className="App">
       <h1>Task Manager</h1>
-      <TaskForm addTask={addTask} />
-      <TaskList tasks={tasks} deleteTask={deleteTask} />
+      <button onClick={sendNotification}>Send Test Notification</button>
     </div>
   );
 }
