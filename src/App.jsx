@@ -59,7 +59,8 @@ function App() {
         serviceWorkerPath: '/React-Vite-PWA/OneSignalSDKWorker.js',
       });
     })();
-  }, []);
+  }, []);  
+  
   // プッシュ通知を送信する関数
   const sendNotification = async () => {
     try {
