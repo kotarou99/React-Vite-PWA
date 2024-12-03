@@ -53,10 +53,13 @@ function App() {
     (async () => {
       await OneSignal.init({
         appId: '3f2f3975-7bef-45d1-a40b-5f47602517ea',
+        serviceWorkerParam: {
+          scope: '/React-Vite-PWA/',
+        },
+        serviceWorkerPath: '/React-Vite-PWA/OneSignalSDKWorker.js',
       });
     })();
   }, []);
-
   // プッシュ通知を送信する関数
   const sendNotification = async () => {
     try {
